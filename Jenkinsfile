@@ -6,13 +6,11 @@ pipeline {
         maven 'maven3'
     }
 
-
+    stages {
         stage('Git COMPILE') {
             steps {
                 sh 'mvn clean compile -DskipTests=true'
             }
-        
+        }
     }
 }
-
-
