@@ -12,5 +12,11 @@ pipeline {
                 sh 'mvn clean compile -DskipTests=true'
             }
         }
+        stage('OWASP Scan') {
+            steps {
+                dependencyCheck additionalArguments: '--scan ./ --format XML --format HTML', odcInstallation: 'DP'
+                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+            }
+        }        
     }
 }
