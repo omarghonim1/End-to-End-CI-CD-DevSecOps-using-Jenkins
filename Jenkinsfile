@@ -5,7 +5,7 @@ pipeline {
         jdk 'jdk11'
         maven 'maven3'
     }
-    Environment {
+    environment {
         SCANNER_HOME= tool 'sonnar-scanner'
     }
 
