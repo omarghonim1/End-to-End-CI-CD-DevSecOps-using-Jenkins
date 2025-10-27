@@ -40,7 +40,7 @@ pipeline {
         }   
         stage('Docker Build & Push') {
             steps {
-                withDockerRegistry(credentialsId: '1ab8a8fa-fdeb-4e36-8bc7-43b7c3ef30f4') {
+                withDockerRegistry(credentialsId: '1ab8a8fa-fdeb-4e36-8bc7-43b7c3ef30f4', url: 'https://index.docker.io/v1/') {
                     sh "docker build -t shopping-cart -f docker/Dockerfile ."
                     sh "docker tag shopping-cart omarghonim/shopping-cart:latest"
                     sh "docker push omarghonim/shopping-cart:latest"
