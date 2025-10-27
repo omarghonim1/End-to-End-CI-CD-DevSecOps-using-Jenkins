@@ -1,128 +1,21 @@
-Spring Boot Shopping Cart Web Application
+<img width="1327" height="403" alt="Screenshot 2025-10-26 173655" src="https://github.com/user-attachments/assets/5cbdc765-8934-44a6-9213-8a6ff933b39d" />## Project Setup
+
+This project is configured to run fully through Jenkins. All required tools and steps are defined in the `Jenkinsfile`. The Jenkins setup includes:
+
+- **Plugins**: Recommended plugins for this project.
+<img width="1105" height="875" alt="Screenshot 2025-10-26 173107" src="https://github.com/user-attachments/assets/b2f1aec5-6817-4c7f-9203-0fadedffc061" />
+
+- **Tools installed via Jenkins**:
+  - SonarQube
+    <img width="1547" height="413" alt="Screenshot 2025-10-26 173626" src="https://github.com/user-attachments/assets/91dc2ea8-f857-4051-91d8-3e11b52d72a4" />
+  - JDK 11
+    <img width="1543" height="377" alt="Screenshot 2025-10-26 173643" src="https://github.com/user-attachments/assets/4a1238d4-f4f5-4f57-8a0c-a1573897dd41" />
+  - Maven
+    <img width="1327" height="403" alt="Screenshot 2025-10-26 173655" src="https://github.com/user-attachments/assets/e5cf70e2-f18a-4a11-93f6-42ffa577b0e0" />
+  - Docker
+    <img width="1354" height="397" alt="Screenshot 2025-10-26 173907" src="https://github.com/user-attachments/assets/1c6268b4-5280-4d8c-bdfb-1a8ac1d044b5" />
+  - Dependency-Check
+<img width="1794" height="319" alt="Screenshot 2025-10-26 174745" src="https://github.com/user-attachments/assets/8991f869-460a-4de9-87fa-89b83c8e6dca" />
 
 
-Overview
-----------------------
-This is a demo project built to practice Spring Boot and Thymeleaf by creating a simple shopping cart application.
-
-The application uses the following technologies:
-Spring Boot, Spring Security, Thymeleaf, Spring Data JPA, Spring Data REST, and Docker.
-The database runs on an in-memory H2 instance.
-
-It includes user authentication (login & registration). Each user has a personal shopping cart (session-based). Checkout operations are fully transactional.
-
-Configuration
-----------------------
-Configuration Files
-----------------------
-
-The folder src/resources/ contains all configuration files for the shopping-cart application.
-
-src/resources/application.properties – Main configuration file. You can update the admin credentials and modify the server port here.
-
-Running the Application
-----------------------
-You can run the application using Maven Wrapper, Maven, or Docker.
-
-Once started, visit:
-- http://localhost:8070/home
-
-Default credentials:
-----------------------
-Admin → username: admin, password: admin
-User → username: user, password: password
-
-
-Running with Maven Wrapper
-----------------------
-1. Using the Maven Plugin
-
-From the project root, run:
-
-$ chmod +x scripts/mvnw
-$ scripts/mvnw spring-boot:run
-
-2. Building & Running Executable JAR
-$ scripts/mvnw clean package
-$ java -jar target/shopping-cart-0.0.1-SNAPSHOT.jar
-
-Running with Maven
-----------------------
-
-First, verify that Java and Maven are properly installed:
-
-$ java -version
-java version "1.8.0_102"
-Java(TM) SE Runtime Environment (build 1.8.0_102-b14)
-Java HotSpot(TM) 64-Bit Server VM (build 25.102-b14, mixed mode)
-
-$ mvn -v
-Apache Maven 3.3.9 (...)
-Maven home: /usr/local/Cellar/maven/3.3.9/libexec
-Java version: 1.8.0_102, vendor: Oracle Corporation
-
-1. Using the Maven Plugin
-$ mvn spring-boot:run
-
-2. Building & Running Executable JAR
-$ mvn clean package
-$ java -jar target/shopping-cart-0.0.1-SNAPSHOT.jar
-
-
-To stop the application, press CTRL + C.
-
-Running with Docker
-----------------------
-
-You can also build and run the application inside a Docker container.
-
-Build Docker Image
-$ mvn clean package
-$ docker build -t shopping-cart:dev -f docker/Dockerfile .
-
-Run Docker Container
-$ docker run --rm -i -p 8070:8070 \
-      --name shopping-cart \
-      shopping-cart:dev
-
-Using Helper Script
-$ chmod +x scripts/run_docker.sh
-$ scripts/run_docker.sh
-
-Project Structure
-----------------------
-Docker
-----------------------
-The docker/ folder contains:
-----------------------
-docker/shopping-cart/Dockerfile – Defines how the Docker image is built and how the application is started inside the container.
-
-Utility Scripts
-----------------------
-scripts/run_docker.sh – Script for building and running the Docker container.
-
-Running Tests
-----------------------
-From the project root, run:
-
-$ mvn test
-
-Tools & Interfaces
-----------------------
-HAL REST Browser
-----------------------
-
-Visit: http://localhost:8070/ (requires authentication).
-
-H2 Database Console
-----------------------
-
-Visit: http://localhost:8070/h2-console
-
-JDBC URL:
-----------------------
-
-jdbc:h2:mem:shopping_cart_db
-
-
-Both the H2 console path and datasource URL can be modified in /src/main/resources/application.properties.
+> All build, test, and deployment steps are automated in the `Jenkinsfile`.
