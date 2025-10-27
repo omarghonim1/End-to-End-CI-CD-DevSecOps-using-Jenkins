@@ -21,11 +21,11 @@ pipeline {
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }    
-        stage('Sonarqube') {
+        stage('SonarQube') {
             steps {
                 withSonarQubeEnv('sonar-server') {
                    sh '''
-                $SCANNER-HOME/bin/sonar-scanner \
+                $SCANNER_HOME/bin/sonar-scanner \
                 -Dsonar.projectName=Shopping-Cart \
                 -Dsonar.java.binaries=. \
                 -Dsonar.projectKey=Shopping-Cart
