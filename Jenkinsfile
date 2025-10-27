@@ -23,7 +23,7 @@ pipeline {
         }    
         stage('Sonarqube') {
             steps {
-                withSonarQubeEnv('sonnar-server') {
+                withSonarQubeEnv('sonar-server') {
                    sh '''
                 $SCANNER-HOME/bin/sonar-scanner \
                 -Dsonar.projectName=Shopping-Cart \
