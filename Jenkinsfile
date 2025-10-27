@@ -46,6 +46,21 @@ pipeline {
                     sh "docker push omarghonim/shopping-cart:latest"
                 }     
             }
-        }                                   
+        }
+        stage('Deploy') {
+            steps {
+                script {
+                withDockerRegistry(credentialsId: '1ab8a8fa-fdeb-4e36-8bc7-43b7c3ef30f4', url: 'https://index.docker.io/v1/') {
+                sh ''' 
+                    docker run -d --name merch-shop \
+                    --ulimit nofile=65535:65535 \
+                    -p 8070:8080 \
+                    -e JAVA_OPTS="-Xms128 -Xmx512m -Djava.security.egd=file:/dev/./urandom -Djava.io.tmpdir=/tmp" \
+                    omarghonim/shopping-cart:latest
+                '''
+                    }
+                }
+            }
+        }                                           
     }
 }
